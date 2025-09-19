@@ -1,0 +1,29 @@
+{
+  "nodes": [
+    { "_id": "sections/S1", "_key": "S1", "label": "Introduction to Formal Methods", "title": "Introduction to Formal Methods", "type": "section", "doc_id": "formal_methods_intro.pdf", "content": "This section introduces the fundamental concepts of formal methods in software verification." },
+    { "_id": "sections/S2", "_key": "S2", "label": "Lean4 Basics", "title": "Lean4 Language Basics", "type": "section", "doc_id": "lean4_guide.pdf", "content": "Overview of Lean4 syntax and basic proof techniques." },
+    { "_id": "sections/S3", "_key": "S3", "label": "Type Theory", "title": "Dependent Type Theory", "type": "section", "doc_id": "type_theory.pdf", "content": "Mathematical foundations of dependent type systems." },
+    { "_id": "lemmas/L1", "_key": "L1", "label": "Soundness Lemma", "title": "Type System Soundness", "type": "lemma", "doc_id": "soundness_proofs.pdf", "content": "Proof that well-typed programs don't get stuck." },
+    { "_id": "lemmas/L2", "_key": "L2", "label": "Completeness Property", "title": "Proof System Completeness", "type": "lemma", "doc_id": "completeness_proofs.pdf", "content": "Every valid statement has a proof in the system." },
+    { "_id": "lemmas/L3", "_key": "L3", "label": "Consistency Check", "title": "Logical Consistency", "type": "lemma", "doc_id": "consistency_proofs.pdf", "content": "The system cannot prove both P and ¬P." },
+    { "_id": "theorems/T1", "_key": "T1", "label": "Main Correctness Theorem", "title": "System Correctness", "type": "theorem", "doc_id": "main_theorem.pdf", "content": "The complete proof system is sound and complete." },
+    { "_id": "theorems/T2", "_key": "T2", "label": "Decidability Result", "title": "Type Checking Decidability", "type": "theorem", "doc_id": "decidability.pdf", "content": "Type checking is decidable for our subset of Lean4." },
+    { "_id": "sections/S4", "_key": "S4", "label": "Contradiction Analysis", "title": "Handling Contradictions", "type": "section", "doc_id": "contradictions.pdf", "content": "Methods for detecting and resolving contradictions in formal proofs." },
+    { "_id": "lemmas/L4", "_key": "L4", "label": "Contradiction Detection", "title": "Automated Contradiction Finding", "type": "lemma", "doc_id": "contradiction_detection.pdf", "content": "Algorithm for finding contradictions in proof dependencies." }
+  ],
+  "edges": [
+    { "_id": "e1", "_from": "sections/S1", "_to": "sections/S2", "type": "depends_on", "weight": 0.8 },
+    { "_id": "e2", "_from": "sections/S2", "_to": "sections/S3", "type": "depends_on", "weight": 0.9 },
+    { "_id": "e3", "_from": "sections/S3", "_to": "lemmas/L1", "type": "depends_on", "weight": 0.95 },
+    { "_id": "e4", "_from": "sections/S3", "_to": "lemmas/L2", "type": "depends_on", "weight": 0.85 },
+    { "_id": "e5", "_from": "lemmas/L1", "_to": "theorems/T1", "type": "refines", "weight": 0.9 },
+    { "_id": "e6", "_from": "lemmas/L2", "_to": "theorems/T1", "type": "refines", "weight": 0.88 },
+    { "_id": "e7", "_from": "sections/S2", "_to": "theorems/T2", "type": "depends_on", "weight": 0.75 },
+    { "_id": "e8", "_from": "lemmas/L1", "_to": "lemmas/L3", "type": "contradicts", "weight": 0.6 },
+    { "_id": "e9", "_from": "sections/S4", "_to": "lemmas/L4", "type": "depends_on", "weight": 0.92 },
+    { "_id": "e10", "_from": "lemmas/L4", "_to": "lemmas/L3", "type": "refines", "weight": 0.8 },
+    { "_id": "e11", "_from": "theorems/T1", "_to": "theorems/T2", "type": "knn", "weight": 0.7 },
+    { "_id": "e12", "_from": "lemmas/L1", "_to": "lemmas/L2", "type": "knn", "weight": 0.65 },
+    { "_id": "e13", "_from": "sections/S1", "_to": "sections/S4", "type": "knn", "weight": 0.55 }
+  ]
+}
